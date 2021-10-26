@@ -25,6 +25,8 @@ def msg_without_reply(self, msg_bytes_str: str) -> None:  # type: ignore
     obj_msg = deserialize(blob=msg_bytes, from_bytes=True)
     if isinstance(obj_msg, SignedImmediateSyftMessageWithoutReply):
         try:
+            print("------------------Task Entered--------------------")
+            print(obj_msg.msg)
             node.recv_immediate_msg_without_reply(msg=obj_msg)
         except ObjectNotInStore as exc:
             raise self.retry(exc=exc, countdown=0.1)
