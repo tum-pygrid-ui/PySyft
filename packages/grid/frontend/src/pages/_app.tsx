@@ -1,3 +1,5 @@
-export default function Home(){
-    return <h1>Hello World!</h1>
+function HomePage() {
+    return <div>Welcome to Next.js!</div>
 }
+
+export default HomePage

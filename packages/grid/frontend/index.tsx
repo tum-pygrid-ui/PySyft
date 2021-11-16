@@ -1,0 +1,1 @@
+<div>Hello world!It's from Helloword Component.</div>
