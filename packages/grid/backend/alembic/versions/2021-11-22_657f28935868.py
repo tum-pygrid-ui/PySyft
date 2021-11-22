@@ -1,4 +1,4 @@
-"""Casting int to CHAR
+"""Casting int to VARCHAR
 
 Revision ID: 657f28935868
 Revises: f72585fbedda
@@ -22,33 +22,33 @@ def upgrade() -> None:
         "request",
         "user_id",
         existing_type=sa.INTEGER(),
-        type_=sa.CHAR(),
+        type_=sa.VARCHAR(length=36),
         existing_nullable=True,
-        postgresql_using='user_id::CHAR'
+        postgresql_using='user_id::VARCHAR'
     )
     op.alter_column(
         "syft_user",
         "id",
         existing_type=sa.INTEGER(),
-        type_=sa.CHAR(),
+        type_=sa.VARCHAR(length=36),
         existing_nullable=False,
-        postgresql_using='id::CHAR'
+        postgresql_using='id::VARCHAR'
     )
     op.alter_column(
         "userenvironment",
         "user",
         existing_type=sa.INTEGER(),
-        type_=sa.CHAR(),
+        type_=sa.VARCHAR(length=36),
         existing_nullable=True,
-        postgresql_using='user::CHAR'
+        postgresql_using='user::VARCHAR'
     )
     op.alter_column(
         "usergroup",
         "user",
         existing_type=sa.INTEGER(),
-        type_=sa.CHAR(),
+        type_=sa.VARCHAR(length=36),
         existing_nullable=True,
-        postgresql_using='user::CHAR'
+        postgresql_using='user::VARCHAR'
     )
     # ### end Alembic commands ###
 
