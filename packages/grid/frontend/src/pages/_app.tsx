@@ -1,5 +1,5 @@
-function HomePage() {
-    return <div>Welcome to Next.js!</div>
-}
+import '../styles/global.css'
 
-export default HomePage
+export default function App({ Component, pageProps }){
+    return <Component {...pageProps} />
+}
