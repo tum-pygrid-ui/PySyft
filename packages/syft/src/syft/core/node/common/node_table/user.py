@@ -5,6 +5,9 @@ from sqlalchemy import Float
 from sqlalchemy import ForeignKey
 from sqlalchemy import Integer
 from sqlalchemy import String
+from sqlalchemy.dialects.postgresql import UUID
+import uuid
+
 
 # relative
 from . import Base
@@ -35,7 +38,7 @@ class UserApplication(Base):
 class SyftUser(Base):
     __tablename__ = "syft_user"
 
-    id = Column(Integer(), primary_key=True, autoincrement=True)
+    id = Column(String(), primary_key=True)
     email = Column(String(255))
     name = Column(String(255), default="")
     budget = Column(Float(), default=0.0)

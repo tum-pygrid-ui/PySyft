@@ -2,6 +2,9 @@
 from sqlalchemy import Column
 from sqlalchemy import ForeignKey
 from sqlalchemy import Integer
+from sqlalchemy import String
+from sqlalchemy.dialects.postgresql import UUID
+import uuid
 
 # relative
 from . import Base
@@ -11,7 +14,7 @@ class UserGroup(Base):
     __tablename__ = "usergroup"
 
     id = Column(Integer(), primary_key=True, autoincrement=True)
-    user = Column(Integer)
+    user = Column(String())
     group = Column(Integer, ForeignKey("group.id"))
 
     def __str__(self) -> str:

@@ -6,6 +6,8 @@ from sqlalchemy import ForeignKey
 from sqlalchemy import Integer
 from sqlalchemy import JSON
 from sqlalchemy import String
+from sqlalchemy.dialects.postgresql import UUID
+import uuid
 
 # relative
 from . import Base
@@ -30,7 +32,7 @@ class Request(Base):
 
     id = Column(String(255), primary_key=True)
     date = Column(DateTime())
-    user_id = Column(Integer)
+    user_id = Column(String())
     user_name = Column(String(255))
     user_email = Column(String(255))
     user_role = Column(String(255))
