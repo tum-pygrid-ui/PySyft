@@ -14,7 +14,7 @@ class UserGroup(Base):
     __tablename__ = "usergroup"
 
     id = Column(Integer(), primary_key=True, autoincrement=True)
-    user = Column(String())
+    user = Column(UUID(as_uuid=True))
     group = Column(Integer, ForeignKey("group.id"))
 
     def __str__(self) -> str:

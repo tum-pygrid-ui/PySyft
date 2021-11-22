@@ -32,7 +32,7 @@ class Request(Base):
 
     id = Column(String(255), primary_key=True)
     date = Column(DateTime())
-    user_id = Column(String())
+    user_id = Column(UUID(as_uuid=True))
     user_name = Column(String(255))
     user_email = Column(String(255))
     user_role = Column(String(255))

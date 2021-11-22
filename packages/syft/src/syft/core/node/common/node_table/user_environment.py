@@ -14,7 +14,7 @@ class UserEnvironment(Base):
     __tablename__ = "userenvironment"
 
     id = Column(Integer(), primary_key=True, autoincrement=True)
-    user = Column(String())
+    user = Column(UUID(as_uuid=True))
     environment = Column(Integer, ForeignKey("environment.id"))
 
     def __str__(self) -> str:

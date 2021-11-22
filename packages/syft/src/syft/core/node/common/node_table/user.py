@@ -38,7 +38,7 @@ class UserApplication(Base):
 class SyftUser(Base):
     __tablename__ = "syft_user"
 
-    id = Column(String(), primary_key=True)
+    id = Column(UUID(as_uuid=True), primary_key=True)
     email = Column(String(255))
     name = Column(String(255), default="")
     budget = Column(Float(), default=0.0)
