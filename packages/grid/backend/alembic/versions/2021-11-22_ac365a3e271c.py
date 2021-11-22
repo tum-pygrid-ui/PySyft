@@ -25,6 +25,11 @@ def upgrade() -> None:
         existing_nullable=False,
         existing_server_default=False,
     )
+
+    op.execute("UPDATE syft_user SET id = LPAD(id, 32, '0')")
+    op.execute("UPDATE request SET user_id = LPAD(user_id, 32, '0')")
+    op.execute("UPDATE userenvironment SET user_id = LPAD(user_id, 32, '0')")
+    op.execute("UPDATE usergroup SET user_id = LPAD(user_id, 32, '0')")
     # ### end Alembic commands ###
 
 

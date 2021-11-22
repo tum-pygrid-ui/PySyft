@@ -36,19 +36,19 @@ def upgrade() -> None:
     )
     op.alter_column(
         "userenvironment",
-        "user",
+        "user_id",
         existing_type=sa.VARCHAR(length=36),
         type_=postgresql.UUID(as_uuid=True),
         existing_nullable=True,
-        postgresql_using='user::UUID'
+        postgresql_using='user_id::UUID'
     )
     op.alter_column(
         "usergroup",
-        "user",
+        "user_id",
         existing_type=sa.VARCHAR(length=36),
         type_=postgresql.UUID(as_uuid=True),
         existing_nullable=True,
-        postgresql_using='user::UUID'
+        postgresql_using='user_id::UUID'
     )
     # ### end Alembic commands ###
 
