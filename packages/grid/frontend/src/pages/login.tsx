@@ -2,27 +2,10 @@ import Image from 'next/image'
 import styled from 'styled-components'
 import { useForm } from "react-hook-form"
 import { Button } from '@/omui'
-
-const FormBox = styled.div`
-    justify-content: center;
-    align-items: center;
-    padding: 5px 10px 15px;
-    color: black;
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.5) 100%), #F1F0F4;
-    border-radius: 4px;
-    margin: 4em; 
-    display: grid;
-    grid-template-rows: repeat(8, minmax(10px, auto))
-    grid-templeate-area:
-        "welcome"
-        "domain_status"
-        "email_label"
-        "email_input"
-        "password_label"
-        "password_input"
-        "sign_up"
-        "login_button"
-`
+import Grid from '../components/Layout/Grid'
+import FullWidthSection from '../components/Layout/FullWidthSection'
+import MaxWidthSection from '../components/Layout/MaxWidthSection'
+import GridRow from '../components/Layout/GridRow'
 
 const Background = styled.div`
     background-image: url("/signup_background_image.png");
@@ -32,46 +15,61 @@ const Background = styled.div`
     background-size: auto; 
     margin: 0;
 `
-const Container=styled.div`
-    background-color: #fffff04c;
-    display: grid; 
-    height: 100vh;
-    color: white;
-    text-align: center;
-    grid-gap: 1em;
-    grid-template-columns: 50% 50%;
-    grid-template-rows: 15% 70% 15%;
-    grid-template-areas: 
-        "header header"
-        "left right"
-        "footer footer"
+const Nav = styled(GridRow)`
+    a {
+        margin-right: 1rem;
+    }
+    p {
+        grid-column-start: 2;
+    }
+    img {
+        margin: 1rem;
+    }
 `
-const HeaderLogo = styled.div`
-    background: #9aaab74c;
-    grid-area: header;
-    justify-content: left;
-`;
-
-const Right = styled.main`
-    background: #9aaab74c;
-    grid-area: right; 
-`;
-
-const Left = styled.div`
-    background: #9aaab74c;
-    grid-area: left;
-`;
-
-const FooterLogo = styled.div`
-    background: #9aaab74c;
-    grid-area: footer;
-`;
-
-const StyledImage = styled(Image)`
-    justify-self: left;
-    padding-left: 2em;
+const Header = styled(FullWidthSection)`
+    padding: 4rem 1.5rem; 
+    background-color: #9aaab702;
 `
+// const Content = styled(MaxWidthSection)`
+//     padding: 15rem 5rem; 
+//     background-color: #9a00f74c;
 
+//     p {
+//         grid-column: 5/12;
+//         background-color: white;
+//     } 
+//`
+const Content = styled.main`
+    grid-column: 1 / span 14;
+    display: grid;
+    grid-template-columns: 1fr repeat(12, minmax(auto, 4.2rem)) 1fr;
+    grid-template-rows: max-content;
+    grid-gap: 2rem 2rem; 
+    
+    padding: 5rem 5rem; 
+    background-color: #9aaab705;
+    div{
+        grid-column:2/10;
+        margin: 3rem;
+    }
+    main{
+        grid-column:10/18;
+        margin: 2rem;
+    }
+`
+const Footer = styled(FullWidthSection)`
+    padding: 4rem 1.5rem; 
+    background-color: #9aaab702;
+    align-content: center;
+    img {
+        margin-left: 10em;
+        justify-items: center;
+    }
+    h1 {
+        justify-items: center; 
+        align-items: center
+    }
+`
 
 export default function Login() {
     const registerUser = async event => {
@@ -93,7 +91,58 @@ export default function Login() {
 
     return (
         <Background>
-           <Container>
+            <Header>
+               <Nav as="nav" sd={2} ed={12}>
+                    <img src="/assets/small-logo.png" width={100} height={40} />
+                </Nav>
+            </Header>
+            <Content>
+                <div className="bg-gradient-to-r from-white-400 to-gray-500 mx-1 max-w-sm shadow-lg rounded-lg overflow-hidden"> 
+                    <div className="sm:flex sm:items-center px-6 py-4"> 
+                    <div className="text-center sm:text-left sm:flex-grow"> 
+                    <div className="mb-4"> 
+                        <h1 className="text-xl leading-tight">Canada Domain</h1> 
+                        <p className="text-sm leading-tight text-gray-400">ID: </p>
+                        <p className="text-sm leading-tight text-gray-400">Hosted Datasets:</p>
+                        <p className="text-sm leading-tight text-gray-400">Deployed On:</p>
+                        <p className="text-sm leading-tight text-gray-400">Owner</p>
+                        <p className="text-sm leading-tight text-gray-400">Network</p>
+                    </div> 
+                    </div> 
+                </div> 
+                </div>
+                <main className="bg-white mx-1 max-w-sm shadow-lg rounded-lg overflow-hidden"> 
+                    <div className="sm:flex sm:items-center px-6 py-4"> 
+                    <div className="text-center sm:text-left sm:flex-grow"> 
+                    <div className="mb-4"> 
+                        <h2 className="text-xl leading-tight">Welcome Back</h2> 
+                        <p className="text-sm leading-tight text-gray-400">Domain Online</p> 
+                    </div> 
+                        <form onSubmit={registerUser}>
+                                    <label htmlFor="email">Email</label>
+                                    <input id="email" name="email" type="text" autoComplete="email" required />
+                                    <label htmlFor="password">Password</label>
+                                    <input id="password" name="password" type="text" autoComplete="password" required />
+                                    <div> 
+                                        <button className="text-xs font-semibold rounded-full px-4 py-1 leading-normal bg-white border-2 border-purple-400 text-purple-500 hover:bg-purple-600 hover:text-white">{'LOGIN'}</button> 
+                                    </div> 
+                        </form>
+                    </div> 
+                </div> 
+                </main>
+            </Content>
+            <Footer>
+                <Nav as="nav" sd={2} ed={12}>
+                    <h1>Empowered By</h1>
+                    <img src="/assets/small-om-logo.png" alt="PyGrid Logo" width={200} height={50}/>
+                </Nav>
+            </Footer>
+        </Background>
+    )
+}
+
+{/* <section>
+            <Container>
                 <HeaderLogo>
                     <Image
                         src="/assets/small-logo.png"
@@ -137,11 +186,6 @@ export default function Login() {
                     /> 
                 </FooterLogo>
             </Container>
-        </Background>
-    )
-}
-
-{/* <section>
             <Body>
                 <Image
                     src="/signup_background_image.png"
