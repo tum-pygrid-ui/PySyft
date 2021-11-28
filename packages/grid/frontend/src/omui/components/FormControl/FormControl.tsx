@@ -2,7 +2,6 @@ import React, {forwardRef} from 'react'
 import type {PropsWithRef, ReactNode} from 'react'
 import cn from 'classnames'
 import {Text} from '../Typography/Text'
-import {Optional} from '@/components/lib'
 
 export interface Props {
   /**
@@ -74,13 +73,13 @@ const FormControl = forwardRef<HTMLDivElement, FormControlProps>(function FormCo
               *
             </Text>
           )}
-          {optional && <Optional size="xs" />}
+          {optional}
         </label>
       )}
       {React.isValidElement(children) ? React.cloneElement(children, childProps) : children}
       {hint && (
         // TODO: Update Text to extend HTMLElement intending to accept id, title, etc.
-        <Text id={hintId} size="sm" className={hintClasses} aria-live={error ? 'polite' : undefined}>
+        <Text size="sm" className={hintClasses} aria-live={error ? 'polite' : undefined}>
           {hint}
         </Text>
       )}
